@@ -208,7 +208,7 @@ export default function App() {
               <div className="absolute -inset-4 bg-orange-100/50 rounded-[2rem] blur-2xl group-hover:bg-orange-200/50 transition-all"></div>
               <img 
                 id="hero-image"
-                src="https://images.unsplash.com/photo-1544365558-35aa4afcf11f?auto=format&fit=crop&q=80&w=1200" 
+                src="https://i.ibb.co/6c3gb3Gw/Chat-GPT-Image-11-de-mai-de-2026-22-52-07.png" 
                 alt="Encontro de Catequese" 
                 className="relative rounded-2xl shadow-2xl border border-white"
                 referrerPolicy="no-referrer"
