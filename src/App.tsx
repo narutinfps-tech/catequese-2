@@ -57,28 +57,7 @@ const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: str
   </div>
 );
 
-const TestimonialCard = ({ name, role, text, years, image }: { name: string, role: string, text: string, years: string, image: string }) => (
-  <div className="bg-white p-8 rounded-2xl shadow-sm border border-neutral-100">
-    <div className="flex gap-1 mb-4">
-      {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
-    </div>
-    <p className="text-neutral-700 italic mb-6 leading-relaxed">"{text}"</p>
-    <div className="flex items-center gap-3">
-      <div className="w-10 h-10 bg-neutral-200 rounded-full overflow-hidden">
-        <img 
-          src={image} 
-          alt={name} 
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-      <div>
-        <h4 className="font-bold text-sm text-neutral-900">{name}</h4>
-        <p className="text-xs text-neutral-500">{role} • {years}</p>
-      </div>
-    </div>
-  </div>
-);
+
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -257,7 +236,7 @@ export default function App() {
             <FeatureCard 
               icon={BookOpen}
               title="Histórias Bíblicas Vivas"
-              description="Metodologias fáceis para ensinar as passagens bíblicas de forma lúdica, onde a criança é a protagonista."
+              description="Metodologias fáceis para ensinar as passageis bíblicas de forma lúdica, onde a criança é a protagonista."
             />
             <FeatureCard 
               icon={ShieldCheck}
@@ -282,6 +261,8 @@ export default function App() {
           </div>
         </div>
       </section>
+
+
 
       {/* Benefits Section */}
       <section className="py-24 bg-[#FDFCF9]">
@@ -332,36 +313,73 @@ export default function App() {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <section className="py-24 bg-neutral-900 text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">Veja quem já transformou sua missão</h2>
-            <p className="text-neutral-400">Catequistas de todo o país que não trocam esse material por nada.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TestimonialCard 
-              name="Maria Aparecida"
-              role="Catequista de Primeira Eucaristia"
-              years="8 anos de missão"
-              image="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200&h=200"
-              text="Antes eu vivia desesperada procurando algo no Pinterest. Agora eu só escolho o tema e pronto. As crianças amam as dinâmicas de acolhimento!"
-            />
-            <TestimonialCard 
-              name="Irmã Conceição"
-              role="Coordenadora Paroquial"
-              years="20 anos dedicada"
-              image="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200"
-              text="Recomendei para toda a minha equipe de catequistas. É um material sério, respeitoso e muito criativo. Vale cada centavo investido."
-            />
-            <TestimonialCard 
-              name="Fernanda Oliveira"
-              role="Catequista Voluntária"
-              years="Iniciando este ano"
-              image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200"
-              text="Eu tinha muito medo de não saber conduzir o encontro por ser nova. Esse kit me deu a segurança que eu precisava. Sinto que estou no caminho certo."
-            />
-          </div>
+      {/* Social Proof (Infinite Image Marquee) */}
+      <section className="py-24 bg-neutral-900 overflow-hidden border-y border-neutral-800">
+        <div className="max-w-7xl mx-auto px-4 mb-12 text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4 text-white">Veja quem já transformou sua missão</h2>
+          <p className="text-neutral-400">Catequistas de todo o país que não trocam esse material por nada.</p>
+        </div>
+        <div className="flex whitespace-nowrap">
+          <motion.div 
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 30, 
+              ease: "linear", 
+              repeat: Infinity 
+            }}
+            className="flex gap-6 pr-6"
+          >
+            {[
+              "https://i.ibb.co/fZyFWgN/provasocial4.png",
+              "https://i.ibb.co/4nh4vMKN/Provasocial1-1.png",
+              "https://i.ibb.co/VYzKJCmm/provasocial2.png",
+              "https://i.ibb.co/NgNMnRVB/provasocial3.png",
+              "https://i.ibb.co/fZyFWgN/provasocial4.png", 
+              "https://i.ibb.co/4nh4vMKN/Provasocial1-1.png",
+              "https://i.ibb.co/VYzKJCmm/provasocial2.png",
+              "https://i.ibb.co/NgNMnRVB/provasocial3.png"
+            ].map((img, idx) => (
+              <div key={idx} className="flex-shrink-0 w-[300px] sm:w-[400px]">
+                <img 
+                  src={img} 
+                  alt={`Depoimento ${idx + 1}`} 
+                  className="w-full rounded-2xl shadow-xl border border-white/10"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </motion.div>
+          {/* Duplicate for seamless marquee */}
+          <motion.div 
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 30, 
+              ease: "linear", 
+              repeat: Infinity 
+            }}
+            className="flex gap-6 pr-6"
+            aria-hidden="true"
+          >
+            {[
+              "https://i.ibb.co/fZyFWgN/provasocial4.png",
+              "https://i.ibb.co/4nh4vMKN/Provasocial1-1.png",
+              "https://i.ibb.co/VYzKJCmm/provasocial2.png",
+              "https://i.ibb.co/NgNMnRVB/provasocial3.png",
+              "https://i.ibb.co/fZyFWgN/provasocial4.png",
+              "https://i.ibb.co/4nh4vMKN/Provasocial1-1.png",
+              "https://i.ibb.co/VYzKJCmm/provasocial2.png",
+              "https://i.ibb.co/NgNMnRVB/provasocial3.png"
+            ].map((img, idx) => (
+              <div key={idx} className="flex-shrink-0 w-[300px] sm:w-[400px]">
+                <img 
+                  src={img} 
+                  alt={`Depoimento ${idx + 1}`} 
+                  className="w-full rounded-2xl shadow-xl border border-white/10"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
