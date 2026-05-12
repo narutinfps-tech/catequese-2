@@ -523,6 +523,54 @@ export default function App() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-[#FFF9F2] rounded-[3rem] overflow-hidden border border-orange-100 flex flex-col md:flex-row items-center">
+            <div className="w-full md:w-2/5 aspect-[4/5] relative">
+              <img 
+                src="https://i.ibb.co/bg851nkC/Pregadoras-Crist-s-Mulheres-pregadoras.jpg" 
+                alt="Criadora do Catequese Criativa" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent md:hidden"></div>
+            </div>
+            <div className="w-full md:w-3/5 p-8 sm:p-16">
+              <span className="text-orange-600 font-bold text-sm tracking-widest uppercase mb-4 block">A Missão</span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-6 text-neutral-900">Quem está por trás do <br className="hidden sm:block" /> Catequese Criativa?</h2>
+              
+              <div className="space-y-6 text-neutral-600 leading-relaxed text-lg">
+                <p>
+                  Olá! Sou apaixonada por ver o brilho nos olhos das crianças quando descobrem o amor de Deus. Como catequista, vivi na pele o desafio de prender a atenção de uma geração conectada, usando métodos que já não faziam sentido para eles.
+                </p>
+                <p>
+                  O <strong>Catequese Criativa</strong> nasceu desse desejo: oferecer ferramentas para que você, catequista, não perca horas noites adentro preparando encontros, mas que tenha em mãos a melhor metodologia para plantar sementes eternas.
+                </p>
+                <p className="font-serif italic text-orange-600 font-medium">
+                  "Acredito que a catequese não é uma aula, é um encontro de vida. E cada encontro merece ser inesquecível."
+                </p>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-4">
+                <div className="flex items-center gap-2 text-sm font-bold text-neutral-900">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-orange-100">
+                    <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+                  </div>
+                  +1.200 Vidas Impactadas
+                </div>
+                <div className="flex items-center gap-2 text-sm font-bold text-neutral-900">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-orange-100">
+                    <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                  </div>
+                  Formação de Qualidade
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-24 bg-[#FDFCF9]">
         <div className="max-w-3xl mx-auto px-4">
