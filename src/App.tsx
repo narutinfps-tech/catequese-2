@@ -185,7 +185,7 @@ export default function App() {
             className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-8"
           >
             Transforme sua Catequese em um <br className="hidden sm:block" />
-            <span className="text-orange-600">Encontro de Vida</span> com +200 Dinâmicas
+            <span className="text-orange-600">Encontro de Vida</span> com +300 Dinâmicas
           </motion.h1>
 
           <motion.p 
@@ -245,7 +245,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">O Que Você Vai Receber Hoje</h2>
-            <p className="text-neutral-600">+200 dinâmicas organizadas e prontas para transformar cada encontro.</p>
+            <p className="text-neutral-600">+300 dinâmicas organizadas e prontas para transformar cada encontro.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -398,7 +398,7 @@ export default function App() {
               }
             ].map((bonus, i) => (
               <div key={i} className="flex flex-col gap-4 p-6 bg-orange-50/50 rounded-2xl border border-orange-100 h-full hover:bg-orange-100/30 transition-colors">
-                {bonus.img ? (
+                {bonus.img && (
                   <div className="w-full aspect-video rounded-xl overflow-hidden mb-2 border border-orange-100 shadow-sm">
                     <img 
                       src={bonus.img} 
@@ -406,10 +406,6 @@ export default function App() {
                       className="w-full h-full object-cover" 
                       referrerPolicy="no-referrer" 
                     />
-                  </div>
-                ) : (
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-2 shadow-sm">
-                    <bonus.i className="w-6 h-6 text-orange-600" />
                   </div>
                 )}
                 <div>
