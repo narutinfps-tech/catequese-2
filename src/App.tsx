@@ -1,0 +1,489 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { 
+  CheckCircle2, 
+  Clock, 
+  Users, 
+  Star, 
+  Download, 
+  ShieldCheck, 
+  ChevronDown, 
+  BookOpen, 
+  Sparkles, 
+  Heart, 
+  Gift, 
+  Check,
+  Calendar,
+  Gamepad2,
+  Map,
+  ArrowRight
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from 'react';
+
+// --- Components ---
+
+const Navbar = () => (
+  <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-orange-100">
+    <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
+          <BookOpen className="text-white w-5 h-5" />
+        </div>
+        <span className="font-serif font-bold text-xl text-neutral-900">Catequese Criativa</span>
+      </div>
+      <a 
+        href="#pricing"
+        className="bg-orange-600 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-700 transition-colors hidden sm:block"
+      >
+        Garantir Acesso
+      </a>
+    </div>
+  </nav>
+);
+
+const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
+  <div className="bg-white p-6 rounded-2xl border border-orange-50 hover:shadow-xl hover:shadow-orange-100/50 transition-all group">
+    <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-600 transition-colors">
+      <Icon className="text-orange-600 w-6 h-6 group-hover:text-white transition-colors" />
+    </div>
+    <h3 className="font-serif font-bold text-lg mb-2 text-neutral-900">{title}</h3>
+    <p className="text-neutral-600 text-sm leading-relaxed">{description}</p>
+  </div>
+);
+
+const TestimonialCard = ({ name, role, text, years }: { name: string, role: string, text: string, years: string }) => (
+  <div className="bg-white p-8 rounded-2xl shadow-sm border border-neutral-100">
+    <div className="flex gap-1 mb-4">
+      {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+    </div>
+    <p className="text-neutral-700 italic mb-6 leading-relaxed">"{text}"</p>
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 bg-neutral-200 rounded-full overflow-hidden">
+        <img 
+          src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`} 
+          alt={name} 
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      <div>
+        <h4 className="font-bold text-sm text-neutral-900">{name}</h4>
+        <p className="text-xs text-neutral-500">{role} • {years}</p>
+      </div>
+    </div>
+  </div>
+);
+
+const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border-b border-orange-100">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-6 flex items-center justify-between text-left group"
+      >
+        <span className="font-serif font-semibold text-lg text-neutral-800 group-hover:text-orange-600 transition-colors">{question}</span>
+        <ChevronDown className={`text-orange-400 w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-orange-600' : ''}`} />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 text-neutral-600 leading-relaxed">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// --- Main App ---
+
+export default function App() {
+  const [timeLeft, setTimeLeft] = useState(24 * 3600); // 24 hours
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <div className="min-h-screen bg-[#FDFCF9] font-sans text-neutral-900">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block bg-orange-50 px-4 py-1.5 rounded-full border border-orange-100 text-orange-700 text-xs font-bold tracking-widest uppercase mb-6"
+          >
+            Material Exclusivo para Catequistas e Formadores
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-8"
+          >
+            Transforme sua Catequese em um <br className="hidden sm:block" />
+            <span className="text-orange-600">Encontro de Vida</span> com +200 Dinâmicas
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-neutral-600 mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
+            Pare de passar horas buscando ideias na internet. Tenha em mãos o guia definitivo para prender a atenção das crianças e marcar o coração dos pequenos com a palavra de Deus.
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col items-center gap-6"
+          >
+            {/* Visual Image Placeholder */}
+            <div className="relative group max-w-3xl mx-auto mb-8">
+              <div className="absolute -inset-4 bg-orange-100/50 rounded-[2rem] blur-2xl group-hover:bg-orange-200/50 transition-all"></div>
+              <img 
+                id="hero-image"
+                src="https://images.unsplash.com/photo-1544365558-35aa4afcf11f?auto=format&fit=crop&q=80&w=1200" 
+                alt="Encontro de Catequese" 
+                className="relative rounded-2xl shadow-2xl border border-white"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4 text-xs font-medium text-neutral-500">
+              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-neutral-100">
+                <Users className="w-4 h-4 text-orange-600" /> +1.200 Catequistas Impactados
+              </div>
+              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-neutral-100">
+                <Download className="w-4 h-4 text-orange-600" /> Acesso Imediato
+              </div>
+              <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-neutral-100">
+                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> 4.9/5 Avaliação média
+              </div>
+            </div>
+
+            <div className="w-full max-w-md">
+              <p className="text-sm font-medium mb-3">A partir de <span className="text-2xl font-bold text-orange-600">R$10,90</span></p>
+              <a 
+                href="#pricing"
+                className="block w-full bg-orange-600 text-white py-5 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
+              >
+                QUERO TRANSFORMAR MINHA CATEQUESE
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Deliverables Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">O Que Você Vai Receber Hoje</h2>
+            <p className="text-neutral-600">+200 dinâmicas organizadas e prontas para transformar cada encontro.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <FeatureCard 
+              icon={Sparkles}
+              title="Acolhimento Impactante"
+              description="Dinâmicas para quebrar o gelo e criar uma conexão imediata logo nos primeiros minutos do encontro."
+            />
+            <FeatureCard 
+              icon={BookOpen}
+              title="Histórias Bíblicas Vivas"
+              description="Metodologias fáceis para ensinar as passagens bíblicas de forma lúdica, onde a criança é a protagonista."
+            />
+            <FeatureCard 
+              icon={ShieldCheck}
+              title="Sacramentos Explicados"
+              description="Atividades práticas para ensinar o Batismo, Eucaristia e Crisma sem ser uma aula cansativa."
+            />
+            <FeatureCard 
+              icon={Heart}
+              title="Valores e Virtudes"
+              description="Trabalhe o amor ao próximo, o perdão e a generosidade através de vivências reais em grupo."
+            />
+            <FeatureCard 
+              icon={Clock}
+              title="Momento de Oração"
+              description="Roteiros para momentos de oração criativa que conectam as crianças com o Sagrado de forma leve."
+            />
+            <FeatureCard 
+              icon={Download}
+              title="Encerramentos Marcantes"
+              description="Como finalizar o encontro garantindo que a semente da palavra foi bem plantada no coração."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-[#FDFCF9]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-8 italic">Por que escolher nosso material?</h2>
+              <ul className="space-y-6">
+                {[
+                  { t: "Chega de Improviso", d: "Tenha um plano reserva sempre na manga para imprevistos." },
+                  { t: "Linguagem Acessível", d: "Conteúdo adaptado para diferentes faixas etárias, sem 'igrejês' complicado." },
+                  { t: "Fácil de Aplicar", d: "Passo a passo com materiais simples (papel, lápis, carinho)." },
+                  { t: "Alinhado com a Igreja", d: "Conteúdo 100% Católico, revisado por formadores experientes." }
+                ].map((item, i) => (
+                  <motion.li 
+                    key={i}
+                    viewport={{ once: true }}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center">
+                      <Check className="text-white w-4 h-4" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-neutral-900">{item.t}</h4>
+                      <p className="text-neutral-600 text-sm">{item.d}</p>
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-orange-100 rounded-3xl p-4 sm:p-12 relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-200/50 rounded-full blur-3xl"></div>
+               <div className="relative space-y-8">
+                  <div className="bg-white p-6 rounded-2xl shadow-sm">
+                    <h3 className="font-serif font-bold text-xl text-orange-600 mb-2">Economize 10h por semana</h3>
+                    <p className="text-sm text-neutral-600">Prepare seu encontro completo em apenas 15 minutos e dedique o restante do tempo à sua própria espiritualidade.</p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl shadow-sm">
+                    <h3 className="font-serif font-bold text-xl text-orange-600 mb-2">Crianças 100% Engajadas</h3>
+                    <p className="text-sm text-neutral-600">Nossas dinâmicas foram testadas em grupos reais de periferia a bairros nobres, garantindo participação ativa.</p>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="py-24 bg-neutral-900 text-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">Veja quem já transformou sua missão</h2>
+            <p className="text-neutral-400">Catequistas de todo o país que não trocam esse material por nada.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <TestimonialCard 
+              name="Maria Aparecida"
+              role="Catequista de Primeira Eucaristia"
+              years="8 anos de missão"
+              text="Antes eu vivia desesperada procurando algo no Pinterest. Agora eu só escolho o tema e pronto. As crianças amam as dinâmicas de acolhimento!"
+            />
+            <TestimonialCard 
+              name="Irmã Conceição"
+              role="Coordenadora Paroquial"
+              years="20 anos dedicada"
+              text="Recomendei para toda a minha equipe de catequistas. É um material sério, respeitoso e muito criativo. Vale cada centavo investido."
+            />
+            <TestimonialCard 
+              name="Fernanda Oliveira"
+              role="Catequista Voluntária"
+              years="Iniciando este ano"
+              text="Eu tinha muito medo de não saber conduzir o encontro por ser nova. Esse kit me deu a segurança que eu precisava. Sinto que estou no caminho certo."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Bonus Section */}
+      <section className="py-24 bg-white border-y border-orange-100">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-orange-600 font-bold text-sm tracking-widest uppercase mb-4 block">Oferta Limitada</span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">Ao Garantir VIP hoje, você ganha 5 Presentes</h2>
+            <p className="text-neutral-600">Complementos poderosos que seriam vendidos separadamente por R$ 97,00 cada.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { t: "Kit de Jogos Bíblicos", i: Gamepad2, d: "Jogos de tabuleiro para imprimir e aprender brincando." },
+              { t: "100 Atividades Bíblicas", i: CheckCircle2, d: "Folhas de atividades para reforçar o dogma em casa." },
+              { t: "Mapas Mentais dos Profetas", i: Map, d: "Estudo visual simplificado para os maiores personagens." },
+              { t: "Calendário Litúrgico kids", i: Calendar, d: "Acompanhe o ano da Igreja de forma colorida." },
+              { t: "Guia de Dinâmicas em Grupo", i: Users, d: "Como lidar com grupos difíceis e indisciplinados." }
+            ].map((bonus, i) => (
+              <div key={i} className="flex gap-4 p-6 bg-orange-50/50 rounded-2xl border border-orange-100">
+                <bonus.i className="w-10 h-10 text-orange-600 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-neutral-900">{bonus.t}</h4>
+                  <p className="text-sm text-neutral-600">{bonus.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-24 bg-[#FDFCF9] relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+             <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-bold border border-red-100 mb-6 animate-pulse">
+                <Clock className="w-4 h-4" /> Oferta expira em: {formatTime(timeLeft)}
+             </div>
+             <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-4">Escolha sua Modalidade</h2>
+             <p className="text-neutral-600">Invista na sua formação e na vida eterna dos seus pequenos.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Basic Plan */}
+            <div className="bg-white p-10 rounded-[2.5rem] border border-neutral-100 flex flex-col items-center">
+              <h3 className="font-serif text-2xl font-bold mb-2">Plano Essencial</h3>
+              <p className="text-neutral-500 text-sm mb-8">Ideal para catequistas iniciantes</p>
+              <div className="text-center mb-10">
+                <span className="block text-neutral-400 line-through text-sm">De R$ 47,90</span>
+                <span className="text-4xl font-bold text-neutral-900">R$ 10,90</span>
+                <span className="block text-xs text-neutral-400 mt-1">Pagamento Único • Acesso Vitalício</span>
+              </div>
+              <ul className="w-full space-y-4 mb-10 text-sm text-neutral-600">
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Dinâmicas de Acolhimento</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Roteiros de Histórias</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Formato PDF (Leve no Celular)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Garantia de 7 dias</li>
+              </ul>
+              <button className="w-full py-4 border-2 border-orange-600 text-orange-600 rounded-2xl font-bold hover:bg-orange-50 transition-colors">
+                QUERO O ESSENCIAL
+              </button>
+            </div>
+
+            {/* VIP Plan */}
+            <div className="bg-white p-10 rounded-[2.5rem] border-2 border-orange-600 relative overflow-hidden shadow-2xl shadow-orange-600/10 flex flex-col items-center">
+              <div className="absolute top-0 right-0 bg-orange-600 text-white px-8 py-1.5 rotate-45 translate-x-1/3 translate-y-1/2 text-[10px] font-bold tracking-widest">MELHOR VALOR</div>
+              <h3 className="font-serif text-2xl font-bold mb-2">Plano Completo VIP</h3>
+              <p className="text-neutral-500 text-sm mb-8">Todos os materiais + 5 bônus inclusos</p>
+              <div className="text-center mb-10">
+                <span className="block text-neutral-400 line-through text-sm">De R$ 197,90</span>
+                <span className="text-5xl font-extrabold text-orange-600">R$ 27,90</span>
+                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 170,00</span>
+              </div>
+              <ul className="w-full space-y-4 mb-10 text-sm text-neutral-700">
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> <strong>Tudo do plano Essencial</strong></li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Kit de Jogos Bíblicos (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> 100 Atividades Bíblicas (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Mapas Mentais dos Personagens</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Certificado de Formação em Dinâmicas</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso ao Grupo VIP Catequistas</li>
+              </ul>
+              <button className="w-full py-5 bg-orange-600 text-white rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                QUERO A VERSÃO COMPLETA <ArrowRight className="w-5 h-5" />
+              </button>
+              <p className="mt-4 text-[10px] text-neutral-400 uppercase tracking-tighter">Compra 100% Segura • Risco Zero</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Guarantee Section */}
+      <section className="py-24 bg-white border-b border-orange-100">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-8">
+            <ShieldCheck className="text-emerald-600 w-10 h-10" />
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-6 italic">Garantia Incondicional de 7 Dias</h2>
+          <div className="bg-orange-50/50 p-8 sm:p-12 rounded-[2rem] border border-orange-100">
+            <p className="text-neutral-700 leading-relaxed text-lg italic">
+              "Fique em paz. Se por qualquer motivo você achar que o material não é para você, basta nos enviar um e-mail em até 7 dias e devolveremos 100% do seu investimento. Sem perguntas, sem burocracia e continuamos amigos."
+            </p>
+          </div>
+          <p className="mt-6 text-sm text-neutral-500 font-medium">Risco zero para você — sua missão é nossa prioridade.</p>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#FDFCF9]">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl font-bold italic">Perguntas Frequentes</h2>
+          </div>
+          <div className="space-y-2">
+            <FAQItem 
+              question="O material é digital ou físico?"
+              answer="O material é 100% digital em formato PDF de alta qualidade. Você recebe o acesso por e-mail imediatamente após a confirmação do pagamento e pode imprimir ou usar direto do celular/tablet."
+            />
+            <FAQItem 
+              question="Posso usar com qualquer faixa etária?"
+              answer="Sim! Dividimos as dinâmicas por grau de complexidade. Temos atividades desde o despertar da fé (4-6 anos) até a perseverança e crismanos."
+            />
+            <FAQItem 
+              question="Preciso de materiais caros?"
+              answer="Não. 95% das dinâmicas usam materiais que você já tem: papel, caneta, fita adesiva ou coisas da natureza. Focamos na criatividade, não no custo."
+            />
+            <FAQItem 
+              question="E se eu não gostar?"
+              answer="Você tem 7 dias de garantia total. Se cobrar o material e achar que não te ajudou, nós devolvemos o dinheiro sem questionar."
+            />
+            <FAQItem 
+              question="Como recebo o acesso?"
+              answer="Assim que o sistema identificar o pagamento, você receberá um e-mail automático com os links de download. Pagamentos via PIX ou Cartão liberam na hora."
+            />
+          </div>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="#pricing"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-orange-700 transition-all"
+            >
+              GARANTIR MEU ACESSO AGORA <Download className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 bg-neutral-900 border-t border-neutral-800 text-center">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
+              <BookOpen className="text-white w-5 h-5" />
+            </div>
+            <span className="font-serif font-bold text-xl text-white">Catequese Criativa</span>
+          </div>
+          <p className="text-neutral-500 text-sm mb-8">Transformando encontros de catequese em experiências inesquecíveis.</p>
+          <div className="flex justify-center gap-8 mb-8 text-neutral-400 text-xs font-bold uppercase tracking-widest">
+            <a href="#" className="hover:text-white">Termos de Uso</a>
+            <a href="#" className="hover:text-white">Privacidade</a>
+            <a href="#" className="hover:text-white">Suporte</a>
+          </div>
+          <p className="text-neutral-600 text-xs mt-8">© {new Date().getFullYear()} Catequese Criativa. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
