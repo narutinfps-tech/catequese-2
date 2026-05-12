@@ -427,6 +427,9 @@ export default function App() {
              </div>
              <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-4">Escolha sua Modalidade</h2>
              <p className="text-neutral-600">Invista na sua formação e na vida eterna dos seus pequenos.</p>
+             <div className="mt-6 flex items-center justify-center gap-2 text-emerald-600 font-bold text-sm bg-emerald-50 w-fit mx-auto px-6 py-2 rounded-full border border-emerald-100">
+                <Users className="w-4 h-4" /> 34 pessoas compraram nos últimos 30 minutos
+             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
