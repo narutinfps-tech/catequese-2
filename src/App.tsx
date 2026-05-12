@@ -451,9 +451,10 @@ export default function App() {
               </ul>
               <a 
                 href="https://pay.wiapy.com/wJqPAhaQ8o"
-                className="w-full py-4 border-2 border-orange-600 text-orange-600 rounded-2xl font-bold hover:bg-orange-50 transition-colors text-center"
+                className="w-full py-4 px-6 border-2 border-orange-600 text-orange-600 rounded-2xl font-bold text-base hover:bg-orange-50 transition-all flex items-center justify-center gap-2 group"
               >
-                QUERO O ESSENCIAL
+                <span>LEVAR O ESSENCIAL</span>
+                <ArrowRight className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
@@ -478,9 +479,10 @@ export default function App() {
               </ul>
               <a 
                 href="https://pay.wiapy.com/V_6N_bYd3"
-                className="w-full py-5 bg-orange-600 text-white rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                className="w-full py-5 px-6 bg-orange-600 text-white rounded-2xl font-bold text-base sm:text-lg hover:bg-orange-700 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
               >
-                QUERO A VERSÃO COMPLETA <ArrowRight className="w-5 h-5" />
+                <span className="text-center leading-tight">GARANTIR ACESSO COMPLETO</span>
+                <ArrowRight className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
               </a>
               <p className="mt-4 text-[10px] text-neutral-400 uppercase tracking-tighter">Compra 100% Segura • Risco Zero</p>
             </div>
