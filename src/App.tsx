@@ -17,9 +17,11 @@ import {
   Gift, 
   Check,
   Calendar,
-  Gamepad2,
+  Presentation,
   Map,
-  ArrowRight
+  ArrowRight,
+  X,
+  ShoppingBag
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
@@ -55,7 +57,7 @@ const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: str
   </div>
 );
 
-const TestimonialCard = ({ name, role, text, years }: { name: string, role: string, text: string, years: string }) => (
+const TestimonialCard = ({ name, role, text, years, image }: { name: string, role: string, text: string, years: string, image: string }) => (
   <div className="bg-white p-8 rounded-2xl shadow-sm border border-neutral-100">
     <div className="flex gap-1 mb-4">
       {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
@@ -64,8 +66,9 @@ const TestimonialCard = ({ name, role, text, years }: { name: string, role: stri
     <div className="flex items-center gap-3">
       <div className="w-10 h-10 bg-neutral-200 rounded-full overflow-hidden">
         <img 
-          src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`} 
+          src={image} 
           alt={name} 
+          className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -106,14 +109,51 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 
 // --- Main App ---
 
+const purchaseNotifications = [
+  { name: "Ana Silva", location: "São Paulo, SP" },
+  { name: "Carlos Oliveira", location: "Belo Horizonte, MG" },
+  { name: "Mariana Souza", location: "Curitiba, PR" },
+  { name: "João Santos", location: "Rio de Janeiro, RJ" },
+  { name: "Patrícia Lima", location: "Salvador, BA" },
+  { name: "Ricardo Ferreira", location: "Brasília, DF" },
+  { name: "Beatriz Costa", location: "Porto Alegre, RS" },
+  { name: "Fernando Rocha", location: "Fortaleza, CE" },
+  { name: "Gabriel Martins", location: "Manaus, AM" },
+  { name: "Juliana Almeida", location: "Recife, PE" }
+];
+
 export default function App() {
   const [timeLeft, setTimeLeft] = useState(24 * 3600); // 24 hours
+  const [currentNotification, setCurrentNotification] = useState<typeof purchaseNotifications[0] | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    let index = 0;
+    
+    const showNextNotification = () => {
+      setCurrentNotification(purchaseNotifications[index]);
+      index = (index + 1) % purchaseNotifications.length;
+
+      // Hide after 4 seconds
+      setTimeout(() => {
+        setCurrentNotification(null);
+      }, 4000);
+
+      // Wait 14 seconds (4 visible + 10 waiting)
+      setTimeout(showNextNotification, 14000);
+    };
+
+    const initialTimeout = setTimeout(showNextNotification, 5000); // Start after 5 seconds
+
+    return () => {
+      clearTimeout(initialTimeout);
+    };
   }, []);
 
   const formatTime = (seconds: number) => {
@@ -304,18 +344,21 @@ export default function App() {
               name="Maria Aparecida"
               role="Catequista de Primeira Eucaristia"
               years="8 anos de missão"
+              image="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200&h=200"
               text="Antes eu vivia desesperada procurando algo no Pinterest. Agora eu só escolho o tema e pronto. As crianças amam as dinâmicas de acolhimento!"
             />
             <TestimonialCard 
               name="Irmã Conceição"
               role="Coordenadora Paroquial"
               years="20 anos dedicada"
+              image="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200"
               text="Recomendei para toda a minha equipe de catequistas. É um material sério, respeitoso e muito criativo. Vale cada centavo investido."
             />
             <TestimonialCard 
               name="Fernanda Oliveira"
               role="Catequista Voluntária"
               years="Iniciando este ano"
+              image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200"
               text="Eu tinha muito medo de não saber conduzir o encontro por ser nova. Esse kit me deu a segurança que eu precisava. Sinto que estou no caminho certo."
             />
           </div>
@@ -327,23 +370,51 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <span className="text-orange-600 font-bold text-sm tracking-widest uppercase mb-4 block">Oferta Limitada</span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">Ao Garantir VIP hoje, você ganha 5 Presentes</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">Ao Garantir VIP hoje, você ganha 4 Presentes</h2>
             <p className="text-neutral-600">Complementos poderosos que seriam vendidos separadamente por R$ 97,00 cada.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { t: "Kit de Jogos Bíblicos", i: Gamepad2, d: "Jogos de tabuleiro para imprimir e aprender brincando." },
-              { t: "100 Atividades Bíblicas", i: CheckCircle2, d: "Folhas de atividades para reforçar o dogma em casa." },
-              { t: "Mapas Mentais dos Profetas", i: Map, d: "Estudo visual simplificado para os maiores personagens." },
-              { t: "Calendário Litúrgico kids", i: Calendar, d: "Acompanhe o ano da Igreja de forma colorida." },
-              { t: "Guia de Dinâmicas em Grupo", i: Users, d: "Como lidar com grupos difíceis e indisciplinados." }
+              { 
+                t: "Resumo Bíblico Ilustrado em Slides", 
+                img: "https://i.ibb.co/VcwYRdwQ/Chat-GPT-Image-10-de-mai-de-2026-01-48-02.png",
+                d: "Aulas prontas e visuais para apresentar o conteúdo bíblico de forma profissional e cativante." 
+              },
+              { 
+                t: "100 Atividades Bíblicas Católicas", 
+                img: "https://i.ibb.co/V0wJ2WMg/Chat-GPT-Image-10-de-mai-de-2026-01-56-38.png",
+                d: "Atividades complementares para reforçar o conteúdo dos encontros." 
+              },
+              { 
+                t: "100 Mapas Mentais dos Personagens Bíblicos", 
+                img: "https://i.ibb.co/JwPqH3Y4/Chat-GPT-Image-10-de-mai-de-2026-02-18-36.png",
+                d: "Resumos visuais para ensinar sobre os grandes personagens da Bíblia." 
+              },
+              { 
+                t: "Calendário Litúrgico Ilustrado", 
+                img: "https://i.ibb.co/gLSkd7jD/Chat-GPT-Image-10-de-mai-de-2026-02-00-35.png", 
+                d: "Acompanhe o ano litúrgico com ilustrações e explicações acessíveis." 
+              }
             ].map((bonus, i) => (
-              <div key={i} className="flex gap-4 p-6 bg-orange-50/50 rounded-2xl border border-orange-100">
-                <bonus.i className="w-10 h-10 text-orange-600 flex-shrink-0" />
+              <div key={i} className="flex flex-col gap-4 p-6 bg-orange-50/50 rounded-2xl border border-orange-100 h-full hover:bg-orange-100/30 transition-colors">
+                {bonus.img ? (
+                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-2 border border-orange-100 shadow-sm">
+                    <img 
+                      src={bonus.img} 
+                      alt={bonus.t} 
+                      className="w-full h-full object-cover" 
+                      referrerPolicy="no-referrer" 
+                    />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-2 shadow-sm">
+                    <bonus.i className="w-6 h-6 text-orange-600" />
+                  </div>
+                )}
                 <div>
-                  <h4 className="font-bold text-neutral-900">{bonus.t}</h4>
-                  <p className="text-sm text-neutral-600">{bonus.d}</p>
+                  <h4 className="font-bold text-neutral-900 leading-tight mb-2">{bonus.t}</h4>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{bonus.d}</p>
                 </div>
               </div>
             ))}
@@ -378,16 +449,19 @@ export default function App() {
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Formato PDF (Leve no Celular)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Garantia de 7 dias</li>
               </ul>
-              <button className="w-full py-4 border-2 border-orange-600 text-orange-600 rounded-2xl font-bold hover:bg-orange-50 transition-colors">
+              <a 
+                href="https://pay.wiapy.com/wJqPAhaQ8o"
+                className="w-full py-4 border-2 border-orange-600 text-orange-600 rounded-2xl font-bold hover:bg-orange-50 transition-colors text-center"
+              >
                 QUERO O ESSENCIAL
-              </button>
+              </a>
             </div>
 
             {/* VIP Plan */}
             <div className="bg-white p-10 rounded-[2.5rem] border-2 border-orange-600 relative overflow-hidden shadow-2xl shadow-orange-600/10 flex flex-col items-center">
               <div className="absolute top-0 right-0 bg-orange-600 text-white px-8 py-1.5 rotate-45 translate-x-1/3 translate-y-1/2 text-[10px] font-bold tracking-widest">MELHOR VALOR</div>
               <h3 className="font-serif text-2xl font-bold mb-2">Plano Completo VIP</h3>
-              <p className="text-neutral-500 text-sm mb-8">Todos os materiais + 5 bônus inclusos</p>
+              <p className="text-neutral-500 text-sm mb-8">Todos os materiais + 4 bônus inclusos</p>
               <div className="text-center mb-10">
                 <span className="block text-neutral-400 line-through text-sm">De R$ 197,90</span>
                 <span className="text-5xl font-extrabold text-orange-600">R$ 27,90</span>
@@ -395,15 +469,19 @@ export default function App() {
               </div>
               <ul className="w-full space-y-4 mb-10 text-sm text-neutral-700">
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> <strong>Tudo do plano Essencial</strong></li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Kit de Jogos Bíblicos (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Resumo Bíblico em Slides (Bônus)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> 100 Atividades Bíblicas (Bônus)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Mapas Mentais dos Personagens</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Calendário Litúrgico Ilustrado</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Certificado de Formação em Dinâmicas</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso ao Grupo VIP Catequistas</li>
               </ul>
-              <button className="w-full py-5 bg-orange-600 text-white rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-lg transition-all flex items-center justify-center gap-2">
+              <a 
+                href="https://pay.wiapy.com/V_6N_bYd3"
+                className="w-full py-5 bg-orange-600 text-white rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              >
                 QUERO A VERSÃO COMPLETA <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
               <p className="mt-4 text-[10px] text-neutral-400 uppercase tracking-tighter">Compra 100% Segura • Risco Zero</p>
             </div>
           </div>
@@ -484,6 +562,36 @@ export default function App() {
           <p className="text-neutral-600 text-xs mt-8">© {new Date().getFullYear()} Catequese Criativa. Todos os direitos reservados.</p>
         </div>
       </footer>
+
+      {/* Purchase Notification */}
+      <AnimatePresence>
+        {currentNotification && (
+          <motion.div 
+            initial={{ opacity: 0, x: -50, y: 50 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            exit={{ opacity: 0, x: -50, scale: 0.95 }}
+            className="fixed bottom-6 left-6 z-[60] bg-white rounded-2xl shadow-2xl border border-orange-100 p-4 w-72 flex items-center gap-4"
+          >
+            <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <ShoppingBag className="text-orange-600 w-5 h-5" />
+            </div>
+            <div className="flex-1 pr-4">
+              <p className="text-xs font-bold text-neutral-900 leading-tight">
+                {currentNotification.name} <span className="font-normal text-neutral-500">acabou de garantir o Material Premium!</span>
+              </p>
+              <p className="text-[10px] text-neutral-400 mt-1 uppercase tracking-widest font-bold">
+                De {currentNotification.location}
+              </p>
+            </div>
+            <button 
+              onClick={() => setCurrentNotification(null)}
+              className="absolute top-2 right-2 text-neutral-300 hover:text-neutral-500 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
