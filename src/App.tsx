@@ -465,8 +465,8 @@ export default function App() {
               <p className="text-neutral-500 text-sm mb-8">Todos os materiais + 4 bônus inclusos</p>
               <div className="text-center mb-10">
                 <span className="block text-neutral-400 line-through text-sm">De R$ 197,90</span>
-                <span className="text-5xl font-extrabold text-orange-600">R$ 27,90</span>
-                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 170,00</span>
+                <span className="text-5xl font-extrabold text-orange-600">R$ 19,90</span>
+                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 178,00</span>
               </div>
               <ul className="w-full space-y-4 mb-10 text-sm text-neutral-700">
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> <strong>Tudo do plano Essencial</strong></li>
@@ -478,7 +478,7 @@ export default function App() {
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso ao Grupo VIP Catequistas</li>
               </ul>
               <a 
-                href="https://pay.wiapy.com/V_6N_bYd3"
+                href="https://pay.wiapy.com/Efr0XgL1o"
                 className="w-full py-5 px-6 bg-orange-600 text-white rounded-2xl font-bold text-base sm:text-lg hover:bg-orange-700 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
               >
                 <span className="text-center leading-tight">GARANTIR ACESSO COMPLETO</span>
