@@ -207,7 +207,7 @@ export default function App() {
             </div>
 
             <div className="w-full max-w-md">
-              <p className="text-sm font-medium mb-3">A partir de <span className="text-2xl font-bold text-orange-600">R$10,90</span></p>
+              <p className="text-sm font-medium mb-3">A partir de <span className="text-2xl font-bold text-orange-600">R$ 10,00</span></p>
               <a 
                 href="#pricing"
                 className="block w-full bg-orange-600 text-white py-5 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
@@ -468,52 +468,29 @@ export default function App() {
              </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Basic Plan */}
-            <div className="bg-white p-10 rounded-[2.5rem] border border-neutral-100 flex flex-col items-center">
-              <h3 className="font-serif text-2xl font-bold mb-2">Plano Essencial</h3>
-              <p className="text-neutral-500 text-sm mb-8">Ideal para catequistas iniciantes</p>
-              <div className="text-center mb-10">
-                <span className="block text-neutral-400 line-through text-sm">De R$ 47,90</span>
-                <span className="text-4xl font-bold text-neutral-900">R$ 10,90</span>
-                <span className="block text-xs text-neutral-400 mt-1">Pagamento Único • Acesso Vitalício</span>
-              </div>
-              <ul className="w-full space-y-4 mb-10 text-sm text-neutral-600">
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Dinâmicas de Acolhimento</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Roteiros de Histórias</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Formato PDF (Leve no Celular)</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Garantia de 7 dias</li>
-              </ul>
-              <a 
-                href="https://pay.wiapy.com/wJqPAhaQ8o"
-                className="w-full py-4 px-6 border-2 border-orange-600 text-orange-600 rounded-2xl font-bold text-base hover:bg-orange-50 transition-all flex items-center justify-center gap-2 group"
-              >
-                <span>LEVAR O ESSENCIAL</span>
-                <ArrowRight className="w-4 h-4 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-
-            {/* VIP Plan */}
+          <div className="max-w-xl mx-auto">
+            {/* VIP Plan - Now the only plan at R$ 10,00 */}
             <div className="bg-white p-10 rounded-[2.5rem] border-2 border-orange-600 relative overflow-hidden shadow-2xl shadow-orange-600/10 flex flex-col items-center">
-              <div className="absolute top-0 right-0 bg-orange-600 text-white px-8 py-1.5 rotate-45 translate-x-1/3 translate-y-1/2 text-[10px] font-bold tracking-widest">MELHOR VALOR</div>
+              <div className="absolute top-0 right-0 bg-orange-600 text-white px-8 py-1.5 rotate-45 translate-x-1/3 translate-y-1/2 text-[10px] font-bold tracking-widest">OFERTA ÚNICA</div>
               <h3 className="font-serif text-2xl font-bold mb-2">Plano Completo VIP</h3>
-              <p className="text-neutral-500 text-sm mb-8">Todos os materiais + 4 bônus inclusos</p>
+              <p className="text-neutral-500 text-sm mb-8">Acesso total a todos os materiais + Bônus</p>
               <div className="text-center mb-10">
                 <span className="block text-neutral-400 line-through text-sm">De R$ 197,90</span>
-                <span className="text-5xl font-extrabold text-orange-600">R$ 19,90</span>
-                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 178,00</span>
+                <span className="text-5xl font-extrabold text-orange-600">R$ 10,00</span>
+                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 187,90</span>
               </div>
               <ul className="w-full space-y-4 mb-10 text-sm text-neutral-700">
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> <strong>Tudo do plano Essencial</strong></li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> <strong>+300 Dinâmicas Criativas</strong></li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Resumo Bíblico em Slides (Bônus)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> 100 Atividades Bíblicas (Bônus)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Mapas Mentais dos Personagens</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Calendário Litúrgico Ilustrado</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Certificado de Formação em Dinâmicas</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso ao Grupo VIP Catequistas</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso Vitalício</li>
               </ul>
               <a 
-                href="https://pay.wiapy.com/Efr0XgL1o"
+                href="https://pay.wiapy.com/wJqPAhaQ8o"
                 className="w-full py-5 px-6 bg-orange-600 text-white rounded-2xl font-bold text-base sm:text-lg hover:bg-orange-700 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
               >
                 <span className="text-center leading-tight">GARANTIR ACESSO COMPLETO</span>
