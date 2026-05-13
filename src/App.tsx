@@ -259,6 +259,16 @@ export default function App() {
               description="Como finalizar o encontro garantindo que a semente da palavra foi bem plantada no coração."
             />
           </div>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="#pricing"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all"
+            >
+              QUERO RECEBER MEU MATERIAL <ArrowRight className="w-5 h-5" />
+            </a>
+            <p className="mt-4 text-xs text-neutral-400">Acesso imediato após a confirmação do pagamento</p>
+          </div>
         </div>
       </section>
 
@@ -309,6 +319,14 @@ export default function App() {
                   </div>
                </div>
             </div>
+          </div>
+          <div className="text-center mt-16">
+            <a 
+              href="#pricing"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all"
+            >
+              SIM! QUERO ECONOMIZAR TEMPO <CheckCircle2 className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </section>
@@ -567,6 +585,14 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="text-center mt-12 pb-16">
+            <a 
+              href="#pricing"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-orange-700 hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all"
+            >
+              COMEÇAR MINHA TRANSFORMAÇÃO AGORA <Sparkles className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </section>
