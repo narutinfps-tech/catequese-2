@@ -48,7 +48,7 @@ const Navbar = () => (
 );
 
 const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
-  <div className="bg-white p-6 rounded-2xl border border-orange-50 hover:shadow-xl hover:shadow-orange-100/50 transition-all group">
+  <div className="bg-white p-6 rounded-2xl border border-orange-50 hover:shadow-xl hover:shadow-orange-100/50 transition-all group flex flex-col items-center text-center">
     <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-600 transition-colors">
       <Icon className="text-orange-600 w-6 h-6 group-hover:text-white transition-colors" />
     </div>
