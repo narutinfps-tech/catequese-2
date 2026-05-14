@@ -167,31 +167,21 @@ export default function App() {
             <span className="text-orange-600">Encontro de Vida</span> com +300 Dinâmicas
           </motion.h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-neutral-600 mb-10 max-w-2xl mx-auto leading-relaxed"
-          >
-            Pare de passar horas buscando ideias na internet. Tenha em mãos o guia definitivo para prender a atenção das crianças e marcar o coração dos pequenos com a palavra de Deus.
-          </motion.p>
-
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
             className="flex flex-col items-center gap-6"
           >
-            {/* Visual Image Placeholder */}
-            <div className="relative group max-w-3xl mx-auto mb-8">
-              <div className="absolute -inset-4 bg-orange-100/50 rounded-[2rem] blur-2xl group-hover:bg-orange-200/50 transition-all"></div>
-              <img 
-                id="hero-image"
-                src="https://i.ibb.co/6c3gb3Gw/Chat-GPT-Image-11-de-mai-de-2026-22-52-07.png" 
-                alt="Encontro de Catequese" 
-                className="relative rounded-2xl shadow-2xl border border-white"
-                referrerPolicy="no-referrer"
-              />
+            {/* Video Section */}
+            <div className="relative w-full aspect-video mb-8 max-w-5xl mx-auto">
+              <iframe
+                src="https://player.vimeo.com/video/1192107955?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="Catequese Criativa Vídeo"
+              ></iframe>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4 text-xs font-medium text-neutral-500">
