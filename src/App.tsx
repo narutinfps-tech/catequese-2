@@ -28,25 +28,6 @@ import { useState, useEffect } from 'react';
 
 // --- Components ---
 
-const Navbar = () => (
-  <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-orange-100">
-    <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
-          <BookOpen className="text-white w-5 h-5" />
-        </div>
-        <span className="font-serif font-bold text-xl text-neutral-900">Catequese Criativa</span>
-      </div>
-      <a 
-        href="#pricing"
-        className="bg-orange-600 text-white px-6 py-2 rounded-full font-medium hover:bg-orange-700 transition-colors hidden sm:block"
-      >
-        Garantir Acesso
-      </a>
-    </div>
-  </nav>
-);
-
 const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
   <div className="bg-white p-6 rounded-2xl border border-orange-50 hover:shadow-xl hover:shadow-orange-100/50 transition-all group flex flex-col items-center text-center">
     <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-600 transition-colors">
@@ -144,10 +125,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FDFCF9] font-sans text-neutral-900">
-      <Navbar />
-
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 overflow-x-hidden">
+      <section className="pt-8 pb-16 px-4 overflow-x-hidden">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -174,7 +153,7 @@ export default function App() {
             className="flex flex-col items-center gap-6"
           >
             {/* Video Section */}
-            <div className="relative w-[calc(100%+2rem)] -mx-4 sm:mx-auto sm:w-full aspect-[9/16] sm:aspect-video mb-12 max-w-6xl lg:max-w-7xl">
+            <div className="relative w-full max-w-[450px] mx-auto aspect-[9/16] mb-12 rounded-[2.5rem] shadow-2xl overflow-hidden border-8 sm:border-[12px] border-white">
               <iframe
                 src="https://player.vimeo.com/video/1192107955?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 className="absolute top-0 left-0 w-full h-full"
@@ -607,12 +586,6 @@ export default function App() {
       {/* Footer */}
       <footer className="py-16 bg-neutral-900 border-t border-neutral-800 text-center">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
-              <BookOpen className="text-white w-5 h-5" />
-            </div>
-            <span className="font-serif font-bold text-xl text-white">Catequese Criativa</span>
-          </div>
           <p className="text-neutral-500 text-sm mb-8">Transformando encontros de catequese em experiências inesquecíveis.</p>
           <div className="flex justify-center gap-8 mb-8 text-neutral-400 text-xs font-bold uppercase tracking-widest">
             <a href="#" className="hover:text-white">Termos de Uso</a>
