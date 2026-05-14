@@ -148,7 +148,7 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 overflow-x-hidden">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,7 +161,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-8"
+            className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-8 max-w-4xl mx-auto"
           >
             Transforme sua Catequese em um <br className="hidden sm:block" />
             <span className="text-orange-600">Encontro de Vida</span> com +300 Dinâmicas
@@ -174,7 +174,7 @@ export default function App() {
             className="flex flex-col items-center gap-6"
           >
             {/* Video Section */}
-            <div className="relative w-[calc(100%+2rem)] -mx-4 sm:mx-auto sm:w-full aspect-video mb-12 max-w-6xl shadow-2xl">
+            <div className="relative w-[calc(100%+2rem)] -mx-4 sm:mx-auto sm:w-full aspect-[9/16] sm:aspect-video mb-12 max-w-6xl lg:max-w-7xl">
               <iframe
                 src="https://player.vimeo.com/video/1192107955?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 className="absolute top-0 left-0 w-full h-full"
