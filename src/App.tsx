@@ -176,7 +176,7 @@ export default function App() {
             </div>
 
             <div className="w-full max-w-md">
-              <p className="text-sm font-medium mb-3">A partir de <span className="text-2xl font-bold text-orange-600">R$ 10,00</span></p>
+              <p className="text-sm font-medium mb-3">Planos a partir de <span className="text-2xl font-bold text-orange-600">R$ 10,00</span></p>
               <a 
                 href="#pricing"
                 className="block w-full bg-orange-600 text-white py-5 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
@@ -241,41 +241,39 @@ export default function App() {
         </div>
       </section>
 
-
-
       {/* Benefits Section */}
       <section className="py-24 bg-[#FDFCF9]">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-8 italic">Por que escolher nosso material?</h2>
-              <ul className="space-y-6">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-12 italic">Por que escolher nosso material?</h2>
+              <div className="space-y-8">
                 {[
-                  { t: "Chega de Improviso", d: "Tenha um plano reserva sempre na manga para imprevistos." },
-                  { t: "Linguagem Acessível", d: "Conteúdo adaptado para diferentes faixas etárias, sem 'igrejês' complicado." },
-                  { t: "Fácil de Aplicar", d: "Passo a passo com materiais simples (papel, lápis, carinho)." },
-                  { t: "Alinhado com a Igreja", d: "Conteúdo 100% Católico, revisado por formadores experientes." }
+                  { t: "Chega de Improviso", d: "Tenha um plano reserva sempre na manga para imprevistos e evite momentos de tensão." },
+                  { t: "Linguagem Acessível", d: "Conteúdo adaptado para diferentes faixas etárias, sem 'igrejês' complicado ou cansativo." },
+                  { t: "Fácil de Aplicar", d: "Passo a passo com materiais simples (papel, lápis, carinho). Você não precisa gastar nada extra." },
+                  { t: "Alinhado com a Igreja", d: "Conteúdo 100% Católico, revisado por formadores experientes e fiel à doutrina." }
                 ].map((item, i) => (
-                  <motion.li 
+                  <motion.div 
                     key={i}
                     viewport={{ once: true }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex gap-4"
+                    className="flex gap-6 p-6 bg-white rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-shadow group"
                   >
-                    <div className="flex-shrink-0 w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center">
-                      <Check className="text-white w-4 h-4" />
+                    <div className="flex-shrink-0 w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+                      <Check className="text-orange-600 w-5 h-5 group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-neutral-900">{item.t}</h4>
-                      <p className="text-neutral-600 text-sm">{item.d}</p>
+                      <h4 className="font-bold text-lg text-neutral-900 mb-1">{item.t}</h4>
+                      <p className="text-neutral-600 text-sm leading-relaxed">{item.d}</p>
                     </div>
-                  </motion.li>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
             </div>
-            <div className="bg-orange-100 rounded-3xl p-4 sm:p-12 relative overflow-hidden">
+            <div className="bg-orange-100 rounded-[3rem] p-6 sm:p-12 relative overflow-hidden lg:sticky lg:top-8">
                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-200/50 rounded-full blur-3xl"></div>
                <div className="relative space-y-8">
                   <div className="bg-white p-6 rounded-2xl shadow-sm">
@@ -437,32 +435,57 @@ export default function App() {
              </div>
           </div>
 
-          <div className="max-w-xl mx-auto">
-            {/* VIP Plan - Now the only plan at R$ 10,00 */}
-            <div className="bg-white p-10 rounded-[2.5rem] border-2 border-orange-600 relative overflow-hidden shadow-2xl shadow-orange-600/10 flex flex-col items-center">
-              <div className="absolute top-0 right-0 bg-orange-600 text-white px-8 py-1.5 rotate-45 translate-x-1/3 translate-y-1/2 text-[10px] font-bold tracking-widest">OFERTA ÚNICA</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+            {/* Basic Plan */}
+            <div className="bg-white p-8 rounded-[2.5rem] border border-orange-100 flex flex-col items-center shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-serif text-xl font-bold mb-2">Plano Essencial</h3>
+              <p className="text-neutral-500 text-sm mb-8">O guia completo de dinâmicas</p>
+              <div className="text-center mb-10">
+                <span className="block text-neutral-400 line-through text-xs">De R$ 47,90</span>
+                <span className="text-4xl font-extrabold text-neutral-800">R$ 10,00</span>
+                <span className="block text-[10px] text-emerald-600 font-bold mt-1 uppercase">Promoção de Lançamento</span>
+              </div>
+              <ul className="w-full space-y-4 mb-10 text-sm text-neutral-600 flex-grow">
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> <strong>+300 Dinâmicas Criativas</strong></li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Suporte via E-mail</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Acesso Vitalício</li>
+                <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> 4 Bônus Exclusivos</li>
+                <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> Certificado de Formação</li>
+                <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> Grupo VIP de Catequistas</li>
+              </ul>
+              <a 
+                href="https://pay.wiapy.com/wJqPAhaQ8o"
+                className="w-full py-4 px-6 bg-neutral-100 text-neutral-600 rounded-2xl font-bold text-base hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 group"
+              >
+                ESCOLHER ESSENCIAL
+              </a>
+            </div>
+
+            {/* VIP Plan */}
+            <div className="bg-white p-8 sm:p-10 rounded-[2.5rem] border-4 border-orange-600 relative overflow-hidden shadow-2xl shadow-orange-600/10 flex flex-col items-center lg:scale-105">
+              <div className="absolute top-0 right-0 bg-orange-600 text-white px-8 py-1.5 rotate-45 translate-x-1/3 translate-y-1/2 text-[10px] font-bold tracking-widest">MAIS VENDIDO</div>
               <h3 className="font-serif text-2xl font-bold mb-2">Plano Completo VIP</h3>
               <p className="text-neutral-500 text-sm mb-8">Acesso total a todos os materiais + Bônus</p>
               <div className="text-center mb-10">
                 <span className="block text-neutral-400 line-through text-sm">De R$ 197,90</span>
-                <span className="text-5xl font-extrabold text-orange-600">R$ 10,00</span>
-                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 187,90</span>
+                <span className="text-5xl font-extrabold text-orange-600">R$ 19,90</span>
+                <span className="block text-xs text-emerald-600 font-bold mt-1">VOCÊ ECONOMIZA R$ 178,00</span>
               </div>
               <ul className="w-full space-y-4 mb-10 text-sm text-neutral-700">
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> <strong>+300 Dinâmicas Criativas</strong></li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Resumo Bíblico em Slides (Bônus)</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> 100 Atividades Bíblicas (Bônus)</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Mapas Mentais dos Personagens</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Calendário Litúrgico Ilustrado</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Certificado de Formação em Dinâmicas</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso ao Grupo VIP Catequistas</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5" /> Acesso Vitalício</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> <strong>+300 Dinâmicas Criativas</strong></li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Slides Bíblicos (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> 100 Atividades (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Mapas Mentais (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Calendário Litúrgico (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Certificado de Formação</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> <strong>Grupo VIP de Catequistas</strong></li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Acesso Vitalício</li>
               </ul>
               <a 
                 href="https://pay.wiapy.com/wJqPAhaQ8o"
                 className="w-full py-5 px-6 bg-orange-600 text-white rounded-2xl font-bold text-base sm:text-lg hover:bg-orange-700 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
               >
-                <span className="text-center leading-tight">GARANTIR ACESSO COMPLETO</span>
+                <span className="text-center leading-tight uppercase font-black">Quero Acesso VIP</span>
                 <ArrowRight className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
               </a>
               <p className="mt-4 text-[10px] text-neutral-400 uppercase tracking-tighter">Compra 100% Segura • Risco Zero</p>
