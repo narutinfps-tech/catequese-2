@@ -140,10 +140,10 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-8 max-w-4xl mx-auto"
+            className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-8 max-w-5xl mx-auto"
           >
-            Transforme sua Catequese em um <br className="hidden sm:block" />
-            <span className="text-orange-600">Encontro de Vida</span> com +300 Dinâmicas
+            +300 dinâmicas católicas para ensinar os <br className="hidden sm:block" />
+            <span className="text-orange-600">sacramentos</span> de forma leve e inesquecível.
           </motion.h1>
 
           <motion.div 
