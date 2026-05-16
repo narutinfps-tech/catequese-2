@@ -133,7 +133,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-block bg-orange-50 px-4 py-1.5 rounded-full border border-orange-100 text-orange-700 text-xs font-bold tracking-widest uppercase mb-6"
           >
-            Material Exclusivo para Catequistas e Formadores
+            Material Exclusivo para Preparação de Sacramentos
           </motion.div>
           
           <motion.h1 
@@ -159,13 +159,13 @@ export default function App() {
                 className="absolute top-0 left-0 w-full h-full"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                title="Catequese Criativa Vídeo"
+                title="Dinâmicas para Sacramentos Vídeo"
               ></iframe>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4 text-xs font-medium text-neutral-500">
               <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-neutral-100">
-                <Users className="w-4 h-4 text-orange-600" /> +1.200 Catequistas Impactados
+                <Users className="w-4 h-4 text-orange-600" /> +1.200 Formadores Impactados
               </div>
               <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-neutral-100">
                 <Download className="w-4 h-4 text-orange-600" /> Acesso Imediato
@@ -181,7 +181,7 @@ export default function App() {
                 href="#pricing"
                 className="block w-full bg-orange-600 text-white py-5 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-orange-600/20 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
               >
-                QUERO TRANSFORMAR MINHA CATEQUESE
+                QUERO ENSINAR OS SACRAMENTOS
               </a>
             </div>
           </motion.div>
@@ -204,18 +204,18 @@ export default function App() {
             />
             <FeatureCard 
               icon={BookOpen}
-              title="Histórias Bíblicas Vivas"
-              description="Metodologias fáceis para ensinar as passageis bíblicas de forma lúdica, onde a criança é a protagonista."
+              title="Teologia Lúdica"
+              description="Metodologias para explicar a graça e os sinais dos sacramentos de forma que as crianças realmente entendam."
             />
             <FeatureCard 
               icon={ShieldCheck}
-              title="Sacramentos Explicados"
-              description="Atividades práticas para ensinar o Batismo, Eucaristia e Crisma sem ser uma aula cansativa."
+              title="Passo a Passo dos Ritos"
+              description="Atividades práticas para ensinar os ritos do Batismo, Eucaristia e Crisma com reverência e alegria."
             />
             <FeatureCard 
               icon={Heart}
-              title="Valores e Virtudes"
-              description="Trabalhe o amor ao próximo, o perdão e a generosidade através de vivências reais em grupo."
+              title="Vida Sacramental"
+              description="Trabalhe a importância da confissão e do compromisso com a Igreja através de vivências em grupo."
             />
             <FeatureCard 
               icon={Clock}
@@ -301,8 +301,8 @@ export default function App() {
       {/* Social Proof (Infinite Image Marquee) */}
       <section className="py-24 bg-neutral-900 overflow-hidden border-y border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 mb-12 text-center">
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4 text-white">Veja quem já transformou sua missão</h2>
-          <p className="text-neutral-400">Catequistas de todo o país que não trocam esse material por nada.</p>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4 text-white">Veja quem já transformou sua missão sacramental</h2>
+          <p className="text-neutral-400">Formadores de todo o país que não trocam esse material por nada.</p>
         </div>
         <div className="flex whitespace-nowrap">
           <motion.div 
@@ -451,7 +451,7 @@ export default function App() {
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Acesso Vitalício</li>
                 <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> 4 Bônus Exclusivos</li>
                 <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> Certificado de Formação</li>
-                <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> Grupo VIP de Catequistas</li>
+                <li className="flex gap-3 opacity-30 grayscale"><X className="text-neutral-400 w-5 h-5 flex-shrink-0" /> Grupo VIP de Formadores</li>
               </ul>
               <a 
                 href="https://pay.wiapy.com/wJqPAhaQ8o"
@@ -474,15 +474,15 @@ export default function App() {
               <ul className="w-full space-y-4 mb-10 text-sm text-neutral-700">
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> <strong>+300 Dinâmicas Criativas</strong></li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Slides Bíblicos (Bônus)</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> 100 Atividades (Bônus)</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Mapas Mentais (Bônus)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> 100 Atividades (Sacramentos)</li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Mapas Mentais (Sacramentos)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Calendário Litúrgico (Bônus)</li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Certificado de Formação</li>
-                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> <strong>Grupo VIP de Catequistas</strong></li>
+                <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> <strong>Grupo VIP de Formadores</strong></li>
                 <li className="flex gap-3"><Check className="text-emerald-500 w-5 h-5 flex-shrink-0" /> Acesso Vitalício</li>
               </ul>
               <a 
-                href="https://pay.wiapy.com/Efr0XgL1o"
+                href="https://pay.cakto.com.br/ahruha4_886550"
                 className="w-full py-5 px-6 bg-orange-600 text-white rounded-2xl font-bold text-base sm:text-lg hover:bg-orange-700 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
               >
                 <span className="text-center leading-tight uppercase font-black">Quero Acesso VIP</span>
@@ -525,17 +525,17 @@ export default function App() {
             </div>
             <div className="w-full md:w-3/5 p-8 sm:p-16">
               <span className="text-orange-600 font-bold text-sm tracking-widest uppercase mb-4 block">A Missão</span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-6 text-neutral-900">Quem está por trás do <br className="hidden sm:block" /> Catequese Criativa?</h2>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-6 text-neutral-900">Quem está por trás do <br className="hidden sm:block" /> Especialista em Sacramentos?</h2>
               
               <div className="space-y-6 text-neutral-600 leading-relaxed text-lg">
                 <p>
-                  Olá! Sou apaixonada por ver o brilho nos olhos das crianças quando descobrem o amor de Deus. Como catequista, vivi na pele o desafio de prender a atenção de uma geração conectada, usando métodos que já não faziam sentido para eles.
+                  Olá! Sou apaixonada por ver o brilho nos olhos das crianças quando descobrem os sinais visíveis da graça invisível de Deus. Como formadora, vivi na pele o desafio de ensinar temas profundos como a Eucaristia de forma leve.
                 </p>
                 <p>
-                  O <strong>Catequese Criativa</strong> nasceu desse desejo: oferecer ferramentas para que você, catequista, não perca horas noites adentro preparando encontros, mas que tenha em mãos a melhor metodologia para plantar sementes eternas.
+                  O material de <strong>Dinâmicas para Sacramentos</strong> nasceu disso: oferecer ferramentas para que você não perca noites preparando encontros técnicos, mas que tenha em mãos a melhor metodologia para ensinar a essência de cada Sacramento.
                 </p>
                 <p className="font-serif italic text-orange-600 font-medium">
-                  "Acredito que a catequese não é uma aula, é um encontro de vida. E cada encontro merece ser inesquecível."
+                  "Acredito que ensinar os sacramentos não é passar teoria, é preparar para um encontro real com o Cristo vivo."
                 </p>
               </div>
 
@@ -578,12 +578,12 @@ export default function App() {
               answer="O material é 100% digital em formato PDF de alta qualidade. Você recebe o acesso por e-mail imediatamente após a confirmação do pagamento e pode imprimir ou usar direto do celular/tablet."
             />
             <FAQItem 
-              question="Posso usar com qualquer faixa etária?"
-              answer="Sim! Dividimos as dinâmicas por grau de complexidade. Temos atividades desde o despertar da fé (4-6 anos) até a perseverança e crismanos."
+              question="Atende todas as etapas dos sacramentos?"
+              answer="Sim! Temos dinâmicas específicas para o Batismo, a Primeira Eucaristia e a Crisma, além de temas transversais como a Penitência (Confissão)."
             />
             <FAQItem 
-              question="Preciso de materiais caros?"
-              answer="Não. 95% das dinâmicas usam materiais que você já tem: papel, caneta, fita adesiva ou coisas da natureza. Focamos na criatividade, não no custo."
+              question="Serve para encontros de pais e padrinhos?"
+              answer="Com certeza. Muitas das nossas dinâmicas de 'Vida Sacramental' são perfeitas para sensibilizar adultos e prepará-los para a missão de acompanhar os iniciantes."
             />
             <FAQItem 
               question="E se eu não gostar?"
@@ -609,13 +609,13 @@ export default function App() {
       {/* Footer */}
       <footer className="py-16 bg-neutral-900 border-t border-neutral-800 text-center">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="text-neutral-500 text-sm mb-8">Transformando encontros de catequese em experiências inesquecíveis.</p>
+          <p className="text-neutral-500 text-sm mb-8">Preparando gerações para um encontro real com os Sacramentos.</p>
           <div className="flex justify-center gap-8 mb-8 text-neutral-400 text-xs font-bold uppercase tracking-widest">
             <a href="#" className="hover:text-white">Termos de Uso</a>
             <a href="#" className="hover:text-white">Privacidade</a>
             <a href="#" className="hover:text-white">Suporte</a>
           </div>
-          <p className="text-neutral-600 text-xs mt-8">© {new Date().getFullYear()} Catequese Criativa. Todos os direitos reservados.</p>
+          <p className="text-neutral-600 text-xs mt-8">© {new Date().getFullYear()} Especialista em Sacramentos. Todos os direitos reservados.</p>
         </div>
       </footer>
 
